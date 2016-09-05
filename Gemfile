@@ -1,17 +1,10 @@
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+
 source 'https://rubygems.org'
 
 # Ruby 2.0 is the minimum requirement
 ruby ['2.0.0', RUBY_VERSION].max
-
-# Load vendored dotenv gem and .env file
-require File.join(File.dirname(__FILE__), 'lib/gemfile_helper.rb')
-GemfileHelper.load_dotenv do |dotenv_dir|
-  path dotenv_dir do
-    gem 'dotenv'
-    gem 'dotenv-rails'
-  end
-end
-
 # Introduces a scope for gem loading based on a condition
 def if_true(condition)
   if condition
@@ -172,30 +165,7 @@ gem 'tzinfo', '>= 1.2.0'	# required by rails; 1.2.0 has support for *BSD and Sol
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 
-on_heroku = ENV['ON_HEROKU'] ||
-            ENV['HEROKU_POSTGRESQL_ROSE_URL'] ||
-            ENV['HEROKU_POSTGRESQL_GOLD_URL'] ||
-            File.read(File.join(File.dirname(__FILE__), 'Procfile')) =~ /intended for Heroku/
+gem 'pg', '~> 0.18.3'
+gem 'dotenv'
+gem 'dotenv-rails'
 
-ENV['DATABASE_ADAPTER'] ||=
-  if on_heroku
-    'postgresql'
-  else
-    'mysql2'
-  end
-
-if_true(on_heroku) do
-  gem 'rails_12factor', group: :production
-end
-
-if_true(ENV['DATABASE_ADAPTER'].strip == 'postgresql') do
-  gem 'pg', '~> 0.18.3'
-end
-
-if_true(ENV['DATABASE_ADAPTER'].strip == 'mysql2') do
-  gem 'mysql2', '~> 0.3.20'
-end
-
-GemfileHelper.parse_each_agent_gem(ENV['ADDITIONAL_GEMS']) do |args|
-  gem *args
-end
