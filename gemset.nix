@@ -1012,6 +1012,7 @@
     version = "0.11.0";
   };
   nokogiri = {
+    dependencies = ["mini_portile2" "pkg-config"];
     source = {
       remotes = ["https://rubygems.org"];
       sha256 = "17pjhvm4yigriizxbbpx266nnh6nckdm33m3j4ws9dcg99daz91p";
@@ -1614,6 +1615,7 @@
     version = "1.3.2";
   };
   therubyracer = {
+    dependencies = [ "libv8" ];
     source = {
       remotes = ["https://rubygems.org"];
       sha256 = "0x93jrl0ac5r0pfqnbv228mikgqxcvdy3rgkl322k1cssr1yvhid";

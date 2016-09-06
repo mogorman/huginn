@@ -23,7 +23,7 @@ let
   };
 in stdenv.mkDerivation {
   name = "huginn";
-  buildInputs = [env ruby curl postgresql glibcLocales ];
+  buildInputs = [env ruby v8 curl postgresql glibcLocales ];
   shellHook = ''
     export SSL_CERT_FILE=${cacert}/etc/ssl/certs/ca-bundle.crt
     export GEM_HOME=./rubygems
