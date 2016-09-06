@@ -169,3 +169,4 @@ gem 'pg', '~> 0.18.3'
 gem 'dotenv'
 gem 'dotenv-rails'
 
+ENV['DATABASE_ADAPTER'] = 'postgresql'
