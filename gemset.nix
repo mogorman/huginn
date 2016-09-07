@@ -63,6 +63,14 @@
     };
     version = "4.2.7.1";
   };
+  activerecord-nulldb-adapter = {
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "1m8jlbzmwc1cx4fb54m9adw962anpz5cazbyirb4qs5brxma63fp";
+      type = "gem";
+    };
+    version = "0.3.3";
+  };
   addressable = {
     source = {
       remotes = ["https://rubygems.org"];

@@ -164,9 +164,9 @@ gem 'tzinfo', '>= 1.2.0'	# required by rails; 1.2.0 has support for *BSD and Sol
 # Windows does not have zoneinfo files, so bundle the tzinfo-data gem.
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
-
+gem "activerecord-nulldb-adapter"
 gem 'pg', '~> 0.18.3'
 gem 'dotenv'
 gem 'dotenv-rails'
 
-ENV['DATABASE_ADAPTER'] = 'postgresql'
+#ENV['DATABASE_ADAPTER'] = 'postgresql'
